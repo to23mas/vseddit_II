@@ -1,0 +1,5 @@
+/vendor/
+/temp/
+/log/
+/cache/
+.idea

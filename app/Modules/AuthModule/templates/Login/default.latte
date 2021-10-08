@@ -1,0 +1,25 @@
+{varType bool $register}
+{varType bool $login}
+
+{block content}
+
+{snippet loginScreen}
+
+	<div  n:if="$login " class="boxMy">
+		<a n:href="showLogin!" class="ajax"><h1 class="paddingTop">Login ?</h1></a>
+		<a n:href="showRegister!" class="ajax"><h1>Register ?</h1></a>
+	</div>
+
+	<div n:if="!$login" class="boxMy">
+		{if $register}
+			{control registerForm}
+		{else}
+			{control loginForm}
+		{/if}
+
+		<div class="backTag">
+			<a n:href="back!" class="ajax">back</a>
+		</div>
+	</div>
+{/snippet}
+

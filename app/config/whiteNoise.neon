@@ -1,0 +1,8 @@
+whiteNoise:
+    dirPath: 'path/to/directory'
+    async: false   #[false, true] v případě true je braná pouze squareHeight
+    width: 500
+    height: 750
+    squareWidth: 50 # pokud není výška a šířka dělitelná touto hodnotou tak dojde ke změně rozměrů!
+    squareHeight: 5 # pokud není výška a šířka dělitelná touto hodnotou tak dojde ke změně rozměrů!
+    colorScheme: 'yellowIsh' # [classic, grey, blackAndWhite, red, blue, green, yellowIsh]

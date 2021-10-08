@@ -1,0 +1,54 @@
+{*NAVBAR - bootstrap*}
+
+{block navbar}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" n:href=":Forum:Forum:default">TomForum</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+{* aktive buttons *}
+      <li class="nav-item active">
+        <a class="nav-link" n:href=":Forum:SubForum:allSubForums">All SubVseddits <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+          <a class="nav-link" n:href=":Forum:Forms:forms subForumForm">Create Sub<span class="sr-only">(current)</span></a>
+      </li>
+{* aktive buttons end *}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Testing Environment
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+          <a class="dropdown-item" n:href=":Test:Test:" >hello</a>
+          <a class="dropdown-item" n:href=":Test:Test:noise">image noise</a>
+          <a class="dropdown-item" n:href=":Test:Test:myMail">mailer</a>
+
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          My Stuff
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" n:href=":Forum:SubForum:allSubForums 'Created Forums'" >Created Subs</a>
+          <a class="dropdown-item" n:href=":Forum:SubForum:allSubForums 'Subscribed Forums'">Subscribed Subs</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+      <a class="btn btn-outline-light my-2 my-sm-0" n:href="logout">Logout</a>
+    </div>
+  </div>
+</nav>

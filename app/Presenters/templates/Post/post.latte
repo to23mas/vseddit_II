@@ -1,0 +1,50 @@
+
+{varType lib\application\Post\Src\Entity\Data\Post $post}
+{varType bool $form}
+{block content}
+
+{*TODO better bootstar --> grid*}
+
+<div class="mx-auto mt-5 border border-dark rounded-pill text-center col-6 ">
+    <h1>{$post->getPostTitle()}</h1>
+
+    <strong>{$post->getPostText()}</strong>
+    <br>
+    creator: {$post->getCreator()-> getUserNick()}
+    <br>
+
+    <div class="align-self-right p-3">
+        <a class="btn btn-warning" n:href="Post:deletePost $post->getPostId(), $post->getSubForum()->getSubId()">
+            Delete Post
+        </a>
+    </div>
+</div>
+
+<hr>
+<hr>
+
+<div class="text-center col-6 mx-auto">
+    <h3>comments: </h3>
+
+    {snippet comment}
+
+        {ifset $form}
+            <a class="ajax border border-dark rounded " n:href="comment! false"> Hide</a>
+            <br>
+             <div class="mt-3 text-center col-6 mx-auto">
+                {control commentForm}
+             </div>
+        {else}
+            <a class="ajax border border-dark rounded " n:href="comment! true"> Add Comment</a>
+            <br>
+        {/ifset}
+
+
+        <hr>
+        <hr>
+</div>
+    {/snippet}
+
+
+{include postsComments.latte}
+

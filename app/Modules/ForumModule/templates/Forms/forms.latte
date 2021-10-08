@@ -1,0 +1,9 @@
+{varType string $forms}
+
+
+{block content}
+  {ifset $forms}
+    <div class="col-md-8 mx-auto pt-5">
+    {control $forms}
+    </div>
+  {/ifset}

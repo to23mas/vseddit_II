@@ -1,0 +1,94 @@
+parameters:
+
+
+application:
+	errorPresenter: Error:Error
+	mapping:
+		*: App\Modules\*Module\*Presenter
+
+
+session:
+	expiration: 14 days
+
+
+di:
+	export:
+		parameters: no
+		tags: no
+
+services:
+	- App\Router\RouterFactory::createRouter
+	- App\Controls\Forms\LoginForm
+	- App\Controls\Forms\RegisterForm
+	- App\Controls\Forms\PostForm
+	- App\Controls\Forms\SubForumForm
+	- Tom\Application\User\Service\UserService
+	- Tom\Application\Comment\Service\CommentService
+	- Tom\Application\Post\Service\PostService
+	- Tom\Application\SubForum\Service\SubForumService
+	- Tom\Application\User\Service\Authenticator
+	- Tom\Application\Pals\Service\PalsService
+#	Tom\Application\Pals\Repository\Data\PalsRepository
+	- App\Facade\PalsFacade
+
+
+extensions:
+    console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+    # Common
+    nettrine.annotations: Nettrine\Annotations\DI\AnnotationsExtension
+    nettrine.cache: Nettrine\Cache\DI\CacheExtension
+    nettrine.migrations: Nettrine\Migrations\DI\MigrationsExtension
+#    nettrine.fixtures: Nettrine\Fixtures\DI\FixturesExtension
+
+    # DBAL
+    nettrine.dbal: Nettrine\DBAL\DI\DbalExtension
+    nettrine.dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension
+
+    # ORM
+    nettrine.orm: Nettrine\ORM\DI\OrmExtension
+    nettrine.orm.cache: Nettrine\ORM\DI\OrmCacheExtension
+    nettrine.orm.console: Nettrine\ORM\DI\OrmConsoleExtension
+    nettrine.orm.annotations: Nettrine\ORM\DI\OrmAnnotationsExtension
+
+    # MY EXTENSIONS...
+    hello: Tom\Hello\DI\Extension
+    whiteNoise: Tom\WhiteNoise\DI\Extension
+    myMail: Tom\Mail\DI\Extension
+    table: Tom\Table\Bridges\DI\Extension
+
+
+# TODO -----------------------------dbal_setting----------------------------------
+nettrine.dbal:
+    debug:
+        panel: %debugMode%
+        sourcePaths: [%appDir%]
+    connection:
+        host: localhost
+        driver: mysqli
+        dbname: vseddit
+        user: phpmyadmin
+        password: warranty
+
+# TODO ----------------------console setting for migration-----------------------------
+nettrine.migrations:
+  directory: App/migrations
+
+# TODO ----------------------console setting-----------------------------
+console:
+    name: Todo project
+    version: '1.0'
+    catchExceptions: true
+    autoExit: false
+    url: 127.0.0.1
+    lazy: false
+
+#nettrine.annotations:
+#  debug: %debugMode%
+#  ignore: [author, since, see]
+#  cache: Doctrine\Common\Cache\PhpFileCache(%tempDir%/cache/doctrine)
+includes:
+    - database.neon
+    - hello.neon
+    - whiteNoise.neon
+    - myMail.neon
+    - table.neon

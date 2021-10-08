@@ -1,0 +1,25 @@
+{varType lib\application\SubForum\Src\Entity\Data\SubForum[] $subForums}
+{varType string $title}
+{block content}
+
+{snippet subs}
+    <div class="row">
+        <div class="col-md-4 mx-auto p-4">
+            <h1>{ifset $title}{$title}{/ifset}</h1>
+        </div>
+    </div>
+    {foreach $subForums as $subForum}
+        <div class="row col-md-8 mx-auto mt-2 pt-4 border border-dark rounded-left">
+            <div class="col-md-2">
+                <a  n:href="SubForum:subForum $subForum->getSubId()">
+                    <h1>{$subForum->getSubTitle()}</h1>
+                </a>
+            </div>
+            <div class="text-left col-md-6">
+                Description: <strong>{$subForum->getSubDescription()}</strong><br>
+                Creator: <i>{$subForum->getCreator()}</i>
+            </div>
+
+        </div>
+    {/foreach}
+{/snippet}

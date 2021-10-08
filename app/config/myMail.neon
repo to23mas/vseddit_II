@@ -1,0 +1,6 @@
+myMail:
+    host: "smtp.gmail.com"
+    username: "tl123ass@gmail.com"
+    password: "123987645"
+    secure:  "ssl"
+    port: 465 # 587

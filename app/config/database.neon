@@ -1,0 +1,18 @@
+nettrine.migrations:
+    directory: %appDir%/migrations
+
+parameters:
+#    applicationPath: %appDir%/Model/Database
+    applicationPath: %appDir%/../lib
+
+nettrine.orm.annotations:
+    mapping: [
+         Tom\Application\Comment\Entity\Data: %appDir%/../lib/application/Comment/Src/Entity/Data
+         Tom\Application\Post\Entity\Data: %appDir%/../lib/application/Post/Src/Entity/Data
+         Tom\Application\SubForum\Entity\Data: %appDir%/../lib/application/SubForum/Src/Entity/Data
+         Tom\Application\User\Entity\Data: %appDir%/../lib/application/User/Src/Entity/Data
+         Tom\Application\Pals\Entity\Data: %appDir%/../lib/application/Pals/src/Entity/Data
+        ]
+
+#        App\Model\Database\Entity: %appDir%/Model/Database/Entity
+#        App\lib:  %appDir%/lib

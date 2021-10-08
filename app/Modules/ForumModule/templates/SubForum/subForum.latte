@@ -1,0 +1,66 @@
+{varType lib\application\SubForum\Src\Entity\Data\SubForum $subForum}
+{varType string $forms}
+{varType int $userId}
+{varType bool $isSubscribed}
+
+
+{block content}
+
+
+{snippet sub}
+
+    {ifset $forms}
+        <div class="mx-auto pt-5 d-flex justify-content-center"><h2>Create New Post</h2></div>
+        <div class="col-md-8 mx-auto pt-1 d-flex justify-content-center">
+            {control postForm}
+        </div>
+    {/ifset}
+
+    <div class="mx-auto mt-5 border border-dark rounded-pill text-center col-6 ">
+
+      <div class="row">
+        <div class="col align-self-center">
+          <h1>{$subForum->getSubTitle()}</h1>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col align-self-center">
+          <strong>{$subForum->getSubDescription()}</strong>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col align-self-center">
+            creator: {$subForum->getCreator()-> getUserNick()}
+        </div>
+      </div>
+
+      <div class="row pb-3">
+
+      {if $subForum->getCreator()->getUserId() == $userId}
+        <div class="col align-self-center pt-3">
+          <a class="btn btn-warning" n:href="deleteSub">Delete Sub</a>
+        </div>
+      {/if}
+        <div class="col align-self-start">
+          <a class="ajax btn btn-outline-dark" n:href="form! postForm, $subForum->getSubId()" >new post</a>
+        </div>
+
+        {if $isSubscribed}
+          <div class="col align-self-end">
+            <a class="ajax btn btn-danger" n:href="SubForum:subscribe $subForum->getSubId()">Subscribe</a>
+          </div>
+        {else}
+          <div class="col align-self-end">
+            <a class="ajax btn btn-primary" n:href="SubForum:subscribe $subForum->getSubId(), false">UnSubscribe</a>
+          </div>
+        {/if}
+
+      </div>
+    </div>
+
+    {include subForumsPosts.latte}
+
+{/snippet}

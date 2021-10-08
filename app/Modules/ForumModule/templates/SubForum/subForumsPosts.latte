@@ -1,0 +1,20 @@
+{varType lib\application\Post\Src\Entity\Data\Post[] $posts}
+
+{block content}
+
+{ifset $posts}
+    {foreach $posts as $post}
+
+        <div class="row">
+
+            <div class="col-md-5 mx-auto mt-2 p-3  border border-dark rounded-left">
+                <a n:href="Post:post $post->getPostId()">
+                    <h3>{$post->getPostTitle()}</h3>
+                </a>
+                <i>{$post->getPostText()}</i>
+
+            </div>
+
+        </div>
+    {/foreach}
+{/ifset}
